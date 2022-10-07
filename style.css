@@ -1,98 +1,92 @@
-body {
-    background-color: rgb(232, 225, 225);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-
-/*  Aligning main container */
-
-.main {
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    margin: auto;
-    border-radius: 5px;
-}
-
-
-/* Aligning row container that contains images */
-
-.row {
-    border-radius: 10px;
-    display: flex;
-    border: 1px solid black;
-    width: 800px;
-    margin: 0 auto;
-    margin-top: 10px;
-    position: relative;
-}
-
-
-/* Positioning Images */
-
-.image {
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    float: right;
-}
-
-.img1 {
-    border-radius: 10px 0 0 10px;
-}
-
-.img3 {
-    border-radius: 0 10px 10px 0;
-}
-
-
-/* Positioning Text on images */
-
-.row>div>div {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    color: white;
-    font-family: sans-serif;
-    /* z-index set to make it appear on top */
-    z-index: 1000;
-    display: flex;
-}
-
-.fa-solid {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: white;
-    font-family: sans-serif;
-    /* z-index set less than image to hide it */
-    z-index: 10;
-}
-
-img {
-    height: 200px;
-    width: 200px;
-    transition: width 1s;
-    z-index: 100;
-    position: relative;
-}
-
-
-/* Setting default width of last image  */
-
-.img3 {
-    width: 400px;
-}
-
-
-/* Making hover effect on images. */
-
-img:hover {
-    box-sizing: border-box;
-    width: 400px;
-    /* z-index now less than icon to make icon appear on top of image */
-    z-index: 0;
-}
+          * {
+              box-sizing: border-box;
+          }
+          
+          body {
+              background-color: rgb(232, 225, 225);
+          }
+          /*  Aligning main container */
+          
+          .container {
+              display: flex;
+              flex-direction: column;
+              width: 800px;
+              margin: 50px auto;
+          }
+          /* Aligning row container that contains images */
+          
+          h2 {
+              margin: 10px auto;
+              align-items: flex-start;
+              justify-content: flex-start;
+              width: 800px;
+          }
+          
+          .row {
+              border-radius: 10px;
+              display: flex;
+              border: 1px solid black;
+              width: 800px;
+              margin-top: 10px;
+              overflow: hidden;
+          }
+          /* Positioning Images */
+          
+          .image {
+              position: relative;
+              /* Below OVERFLOW-HIDDEDN was the bug that didn't realise earlier, NOW I FIXED IT.  */
+              /* overflow: hidden; */
+              display: flex;
+              height: 200px;
+          }
+          
+          img {
+              height: 200px;
+              width: 200px;
+              transition: width .1s;
+              z-index: 100;
+              position: relative;
+              transition-timing-function: ease-in;
+          }
+          /*Border radius of first and last image  */
+          
+          .img1 {
+              border-radius: 10px 0 0 10px;
+              /* z-index: 100; */
+          }
+          
+          .img3 {
+              border-radius: 0 10px 10px 0;
+              /* box-sizing: content-box; */
+              width: 400px;
+              /* z-index: 100; */
+          }
+          /* Positioning Text on images */
+          
+          .image-text {
+              position: absolute;
+              top: 10px;
+              left: 15px;
+              color: white;
+              font-family: sans-serif;
+              /* z-index set to make it appear on top */
+              z-index: 1000;
+              display: flex;
+          }
+          
+          .fa-solid {
+              position: absolute;
+              top: 10px;
+              right: 15px;
+              color: white;
+              font-family: sans-serif;
+              /* z-index set less than image to hide it */
+              z-index: 2;
+          }
+          /* Making hover effect on images. */
+          
+          img:hover {
+              width: 400px;
+              /* z-index now less than icon to make icon appear on top of image */
+              z-index: 1;
+          }
